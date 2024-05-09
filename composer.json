@@ -1,0 +1,81 @@
+{
+  "name": "juststeveking/ollama-php",
+  "description": "A PHP SDK for interacting with the Ollama API.",
+  "license": "MIT",
+  "type": "package",
+  "version": "0.0.1",
+  "keywords": [
+    "php","ollama","api"
+  ],
+  "readme": "./README.md",
+  "authors": [
+    {
+      "name": "Steve McDougall",
+      "email": "juststevemcd@gmail.com",
+      "role": "Developer",
+      "homepage": "https://www.juststeveking.uk/"
+    }
+  ],
+  "support": {
+    "email": "juststevemcd@gmail.com",
+    "issues": "https://github.com/juststeveking/ollama-php/issues",
+    "source": "https://github.com/juststeveking/ollama-php"
+  },
+  "funding": [
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/JustSteveKing"
+    }
+  ],
+  "require": {
+    "php": "^8.3"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-latest",
+    "phpstan/phpstan": "^1.10",
+    "phpstan/phpstan-strict-rules": "^1.5",
+    "laravel/pint": "^1.15",
+    "pestphp/pest": "^2.34"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "autoload": {
+    "psr-4": {
+
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    },
+    "preferred-install": {
+      "*": "dist"
+    },
+    "github-protocols": [
+      "git","ssh","https"
+    ],
+    "optimize-autoloader": true,
+    "classmap-authoritative": true
+  },
+  "scripts": {
+    "pint": [
+      "./vendor/bin/pint"
+    ],
+    "stan": [
+      "./vendor/bin/phpstan analyse --memory-limit=3g"
+    ],
+    "test": [
+      "./vendor/bin/pest"
+    ]
+  },
+  "scripts-descriptions": {
+    "pint": "Run the Laravel Pint code style.",
+    "stan": "Run the PhpStan static analysis.",
+    "test": "Run the pestPHP test suite."
+  }
+}
