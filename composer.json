@@ -28,20 +28,22 @@
     }
   ],
   "require": {
-    "php": "^8.3"
+    "php": "^8.3",
+    "juststeveking/php-sdk": "^3.0"
   },
   "require-dev": {
     "roave/security-advisories": "dev-latest",
     "phpstan/phpstan": "^1.10",
     "phpstan/phpstan-strict-rules": "^1.5",
     "laravel/pint": "^1.15",
-    "pestphp/pest": "^2.34"
+    "pestphp/pest": "^2.34",
+    "symfony/http-client": "^7.0"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
   "autoload": {
     "psr-4": {
-
+      "JustSteveKing\\Ollama\\": "src/"
     }
   },
   "autoload-dev": {
@@ -51,7 +53,8 @@
   },
   "config": {
     "allow-plugins": {
-      "pestphp/pest-plugin": true
+      "pestphp/pest-plugin": true,
+      "php-http/discovery": true
     },
     "preferred-install": {
       "*": "dist"
