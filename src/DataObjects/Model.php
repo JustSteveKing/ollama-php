@@ -12,25 +12,25 @@ final readonly class Model
 {
     public function __construct(
         public string $name,
+        public DateTimeInterface $modified_at,
         public int $size,
         public string $digest,
         public ModelDetails $details,
-        public null|DateTimeInterface $modifiedAt,
     ) {}
 
     /**
      * @param array{
      *     name:string,
+     *     modified_at:string,
      *     size:int,
      *     digest:string,
      *     details:array{
-     *         format:string,
-     *         family:string,
-     *         families:null|array<int,string>,
-     *         parameter_size:string,
-     *         quantization_level:string,
-     *     },
-     *     modified_at:null|string
+     *       format:string,
+     *       family:string,
+     *       famillies:null|array,
+     *       parameter_size:string,
+     *       quantization_level:string,
+     *     }
      * } $data
      * @return Model
      * @throws Exception
@@ -39,14 +39,14 @@ final readonly class Model
     {
         return new Model(
             name: $data['name'],
+            modified_at: new DateTimeImmutable(
+                datetime: $data['modified_at'],
+            ),
             size: $data['size'],
             digest: $data['digest'],
             details: ModelDetails::make(
                 data: $data['details'],
             ),
-            modifiedAt: $data['modified_at'] ? new DateTimeImmutable(
-                datetime: $data['modified_at'],
-            ) : null,
         );
     }
 }

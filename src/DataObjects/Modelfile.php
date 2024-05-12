@@ -17,7 +17,7 @@ final readonly class Modelfile
      * @param float $repeat_penalty Sets how strongly to penalize repetitions. A higher value (e.g., 1.5) will penalize repetitions more strongly, while a lower value (e.g., 0.9) will be more lenient. (Default: 1.1)
      * @param float $temperature The temperature of the model. Increasing the temperature will make the model answer more creatively. (Default: 0.8)
      * @param int $seed Sets the random number seed to use for generation. Setting this to a specific number will make the model generate the same text for the same prompt. (Default: 0)
-     * @param null|string $stop Sets the stop sequences to use. When this pattern is encountered the LLM will stop generating text and return. Multiple stop patterns may be set by specifying multiple separate stop parameters in a modelfile.
+     * @param string|null $stop Sets the stop sequences to use. When this pattern is encountered the LLM will stop generating text and return. Multiple stop patterns may be set by specifying multiple separate stop parameters in a modelfile.
      * @param float $tfs_z Tail free sampling is used to reduce the impact of less probable tokens from the output. A higher value (e.g., 2.0) will reduce the impact more, while a value of 1.0 disables this setting. (default: 1)
      * @param int $num_predict Maximum number of tokens to predict when generating text. (Default: 128, -1 = infinite generation, -2 = fill context)
      * @param int $top_k Reduces the probability of generating nonsense. A higher value (e.g. 100) will give more diverse answers, while a lower value (e.g. 10) will be more conservative. (Default: 40)
@@ -41,20 +41,20 @@ final readonly class Modelfile
 
     /**
      * @param array{
-     *      mirostat:int,
-     *      microstat_eta:float,
-     *      mirostat_tau:float,
-     *      num_ctx:int,
-     *      repeat_last_n:int,
-     *      repeat_penalty:float,
-     *      temperature:float,
-     *      seed:int,
-     *      stop:null|string,
-     *      tfs_z:float,
-     *      num_predict:int,
-     *      top_k:int,
-     *      top_p:float,
-     *  } $data
+     *     mirostat:null|int,
+     *     mirostat_eta:null|float,
+     *     mirostat_tau:null|float,
+     *     num_ctx:null|int,
+     *     repeat_last_n:null|int,
+     *     repeat_penalty:null|float,
+     *     temperature:null|float,
+     *     seed:null|int,
+     *     stop:null|string,
+     *     tfs_z:null|float,
+     *     num_predict:null|int,
+     *     top_k:null|int,
+     *     top_p:null|float,
+     * } $data
      * @return Modelfile
      */
     public static function make(array $data): Modelfile
@@ -68,7 +68,7 @@ final readonly class Modelfile
             repeat_penalty: $data['repeat_penalty'] ?? 1.1,
             temperature: $data['temperature'] ?? 0.8,
             seed: $data['seed'] ?? 0,
-            stop: $data['stop'] ??  null,
+            stop: $data['stop'] ?? null,
             tfs_z: $data['tfs_z'] ?? 1,
             num_predict: $data['num_predict'] ?? 128,
             top_k: $data['top_k'] ?? 40,
@@ -78,20 +78,20 @@ final readonly class Modelfile
 
     /**
      * @return array{
-     *     mirostat:int,
-     *     microstat_eta:float,
-     *     mirostat_tau:float,
-     *     num_ctx:int,
-     *     repeat_last_n:int,
-     *     repeat_penalty:float,
-     *     temperature:float,
-     *     seed:int,
-     *     stop:null|string,
-     *     tfs_z:float,
-     *     num_predict:int,
-     *     top_k:int,
-     *     top_p:float,
-     * }
+     *      mirostat:int,
+     *      mirostat_eta:float,
+     *      mirostat_tau:float,
+     *      num_ctx:int,
+     *      repeat_last_n:int,
+     *      repeat_penalty:float,
+     *      temperature:float,
+     *      seed:int,
+     *      stop:null|string,
+     *      tfs_z:float,
+     *      num_predict:int,
+     *      top_k:int,
+     *      top_p:float,
+     * }}
      */
     public function toArray(): array
     {

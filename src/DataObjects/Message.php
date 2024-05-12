@@ -6,20 +6,20 @@ namespace JustSteveKing\Ollama\DataObjects;
 
 use JsonException;
 use JustSteveKing\Ollama\Enums\Role;
-use function json_encode;
 
 final readonly class Message
 {
     /**
      * @param Role $role The role of the message, either system, user or assistant
      * @param string $content The content of the message
-     * @param null|array<int,string> $images A list of images to include in the message (for multimodal models such as llava)
+     * @param array|null $images (optional): A list of images to include in the message (for multimodal models such as llava)
      */
     public function __construct(
         public Role $role,
         public string $content,
         public null|array $images = null,
-    ) {}
+    ) {
+    }
 
     /**
      * @param array{
@@ -45,7 +45,7 @@ final readonly class Message
      *     role:string,
      *     content:string,
      *     images:null|array<int,string>,
-     * }
+     * }}
      */
     public function toArray(): array
     {

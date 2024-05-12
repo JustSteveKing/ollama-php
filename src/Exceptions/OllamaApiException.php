@@ -6,7 +6,4 @@ namespace JustSteveKing\Ollama\Exceptions;
 
 use Exception;
 
-class OllamaApiException extends Exception
-{
-    //
-}
+final class OllamaApiException extends Exception {}
